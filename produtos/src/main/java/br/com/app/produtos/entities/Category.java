@@ -1,7 +1,7 @@
 package br.com.app.produtos.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ public class Category {
     private Long id;
     private String nome;
     @JsonIgnore
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public Category() {
     }
