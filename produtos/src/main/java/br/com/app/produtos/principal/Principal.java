@@ -18,7 +18,6 @@ public class Principal {
 
     public void execute() {
         teste();
-
     }
 
 
@@ -43,8 +42,6 @@ public class Principal {
         //Incluindo os produtos na categoria
         cat1.getProducts().addAll(Arrays.asList(prod1,prod3));
         cat2.getProducts().addAll(Arrays.asList(prod2,prod4));
-
-
     }
 
 }
