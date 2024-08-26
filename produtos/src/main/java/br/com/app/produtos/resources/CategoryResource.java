@@ -30,7 +30,7 @@ public class CategoryResource {
     }
 
     //Metodo para salvar um nova categoria
-    @PostMapping(value = "/{id}")
+    @PostMapping
     public ResponseEntity<Category> save(@RequestBody Category category){
         var cat = categoryRepository.save(category);
         categoryRepository.save(category);
