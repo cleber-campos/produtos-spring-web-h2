@@ -1,12 +1,20 @@
 package br.com.app.produtos.entities;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "id_category")
     private Category category;
 
-    public Product() {
+    public Product(){
     }
 
     public Product(Long id, String name, Double price, Category category) {
@@ -30,10 +38,6 @@ public class Product {
 
     public Category getCategory() {
         return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     @Override

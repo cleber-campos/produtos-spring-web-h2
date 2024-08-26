@@ -2,15 +2,16 @@ package br.com.app.produtos.principal;
 
 import br.com.app.produtos.entities.Category;
 import br.com.app.produtos.entities.Product;
-import br.com.app.produtos.repositories.CategoryRepository;
+import br.com.app.produtos.repositories.ICategoryRepository;
+import br.com.app.produtos.repositories.IProductRepository;
 import br.com.app.produtos.repositories.ProductRepository;
 import java.util.Arrays;
 
 public class Principal {
-    private final CategoryRepository categoryRepository;
-    private final ProductRepository productRepository;
+    private final ICategoryRepository categoryRepository;
+    private final IProductRepository productRepository;
 
-    public Principal(CategoryRepository categoryRepository, ProductRepository productRepository) {
+    public Principal(ICategoryRepository categoryRepository, IProductRepository productRepository) {
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
     }
@@ -23,14 +24,17 @@ public class Principal {
 
     public void teste(){
         //criacao de categorias
-        Category cat1 = new Category(1L, "Electronics");
-        Category cat2 = new Category(2L, "Books");
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+
+        categoryRepository.save(cat1);
+        categoryRepository.save(cat2);
 
         //criacao de produtos
-        Product prod1 = new Product(1L, "TV", 2200.00, cat1);
-        Product prod2 = new Product(2L, "Domain Driven Design", 120.00, cat2);
-        Product prod3 = new Product(3L, "PS5", 2800.00, cat1);
-        Product prod4 = new Product(2L, "Docker", 120.00, cat2);
+        Product prod1 = new Product(null,"TV", 2200.00, cat1);
+        Product prod2 = new Product(null,"Domain Driven Design", 120.00, cat2);
+        Product prod3 = new Product(null,"PS5", 2800.00, cat1);
+        Product prod4 = new Product(null,"Docker", 120.00, cat2);
         productRepository.save(prod1);
         productRepository.save(prod2);
         productRepository.save(prod3);
@@ -39,9 +43,6 @@ public class Principal {
         //Incluindo os produtos na categoria
         cat1.getProducts().addAll(Arrays.asList(prod1,prod3));
         cat2.getProducts().addAll(Arrays.asList(prod2,prod4));
-        categoryRepository.save(cat1);
-        categoryRepository.save(cat2);
-
 
 
     }

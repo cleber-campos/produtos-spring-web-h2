@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//exemplo que classe para guardar objeto em memoria
 @Component
 public class ProductRepository {
     private Map<Long, Product> map = new HashMap<>();
